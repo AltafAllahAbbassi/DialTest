@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # encoding=utf-8
-
-import tensorflow as tf
+# import sys
+# sys.path.append("./")
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 # from transformers import *
 import heapq
 # from tensorflow.python.ops.gen_math_ops import mod
 import numpy as np
-from bert import modeling as modeling, tokenization
+from DialTest.bert import modeling as modeling, tokenization
 from collections import defaultdict
 
 print(tf.__version__)
@@ -316,7 +318,7 @@ def augment(ori_sentence, aug_num, model_dir=None):
 
 
 if __name__ == "__main__":
-    model_dir = '/home/cici/major/NLPDataAugmentation/wwm_cased_L-24_H-1024_A-16/'
+    model_dir = '/home/altaf/Desktop/RLTest4chatbot/DialTest/wwm_cased_L-24_H-1024_A-16/'
     seed_sentence = "I'd:O like:O to:O have:O this:O track:B-music_item onto:O my:B-playlist_owner " \
                     "Classical:B-playlist Relaxations:I-playlist playlist.:O <=> AddToPlaylist"
     print(augment(seed_sentence, 1, model_dir=model_dir))
